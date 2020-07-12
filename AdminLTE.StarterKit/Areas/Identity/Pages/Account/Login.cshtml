@@ -1,0 +1,88 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Log in</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <partial name="AdminLTE/_Styles" />
+</head>
+<body class="hold-transition login-page" style="background: white!important;">
+    <div class="login-box">
+        <div class="login-logo">
+                <a href="../../index2.html"><b>Admin</b>LTE</a> Starter Kit
+            </div>
+            <!-- /.login-logo -->
+            <div class="card">
+                <div class="card-body login-card-body">
+                    <p class="login-box-msg">Sign in to start your session</p>
+
+                    <form id="account" method="post">
+                        <div class="input-group mb-3">
+                            <input asp-for="Input.Email" class="form-control" placeholder="Email / Username">
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-envelope"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input asp-for="Input.Password" type="password" class="form-control" placeholder="Password">
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-lock"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="icheck-primary">
+                                    <label asp-for="Input.RememberMe">
+                                        <input asp-for="Input.RememberMe" />
+                                        @Html.DisplayNameFor(m => m.Input.RememberMe)
+                                    </label>
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-4">
+                                <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                    </form>
+
+
+                </div>
+
+
+            </div>
+            <!-- /.login-card-body -->
+            <div style="text-align: -webkit-center;">
+                <br />
+                <p class="mb-1">
+                    <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                </p>
+                <p class="mb-0">
+                    <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                </p>
+                <br />
+                <small style="font-size:15px"> Made with <span style="color: #e25555;">&hearts;</span> by <a href="http://codewithmukesh.com">codewithmukesh</a> and <a href="http://adminlte.io">AdminLTE.io</a>.</small>
+
+            </div>
+        </div>
+    <partial name="AdminLTE/_Scripts" />
+
+</body>
+</html>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
