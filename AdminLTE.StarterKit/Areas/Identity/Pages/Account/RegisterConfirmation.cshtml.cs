@@ -24,7 +24,7 @@ namespace AdminLTE.StarterKit.Areas.Identity.Pages.Account
 
         public string Email { get; set; }
 
-        public bool DisplayConfirmAccountLink { get; set; }
+        public bool DisplayConfirmAccountLink { get; set; } = false;
 
         public string EmailConfirmationUrl { get; set; }
 
@@ -42,20 +42,6 @@ namespace AdminLTE.StarterKit.Areas.Identity.Pages.Account
             }
 
             Email = email;
-            // Once you add a real email sender, you should remove this code that lets you confirm the account
-            DisplayConfirmAccountLink = true;
-            if (DisplayConfirmAccountLink)
-            {
-                var userId = await _userManager.GetUserIdAsync(user);
-                var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-                EmailConfirmationUrl = Url.Page(
-                    "/Account/ConfirmEmail",
-                    pageHandler: null,
-                    values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
-                    protocol: Request.Scheme);
-            }
-
             return Page();
         }
     }

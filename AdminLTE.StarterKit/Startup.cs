@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.AspNetCore.Http;
+using AdminLTE.StarterKit.Services;
 
 namespace AdminLTE.StarterKit
 {
@@ -47,6 +48,8 @@ namespace AdminLTE.StarterKit
             });
             services.AddRazorPages();
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.Configure<SMTPSettings>(Configuration.GetSection("SMTPSettings"));
+            services.AddScoped<IEmailService, EmailService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
