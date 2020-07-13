@@ -19,10 +19,16 @@
         <!-- Sidebar user (optional) -->
         @if (SignInManager.IsSignedIn(User))
         {
+
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                <div class="image">
-                    <img src="~/img/user2-160x160.jpg" class="img-circle elevation-0" alt="User Image">
-                </div>
+
+                @if (UserManager.GetUserAsync(User).Result.ProfilePicture != null)
+                {
+                    <div class="image">
+                        <img class="img-circle elevation-0" style="width:40px;height:40px; object-fit:cover; border-radius:30px" src="data:image/*;base64,@(Convert.ToBase64String(UserManager.GetUserAsync(User).Result.ProfilePicture))">
+                    </div>
+                }
+
                 <div class="info">
                     <a href="#" class="d-block">@UserManager.GetUserAsync(User).Result.FirstName @UserManager.GetUserAsync(User).Result.LastName</a>
                 </div>
@@ -34,7 +40,7 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
-    with font-awesome or any other icon font library -->
+                with font-awesome or any other icon font library -->
                 <li class="nav-item">
                     <a is-active-page asp-page="/Index" class="nav-link">
                         <i class="nav-icon fas fa-home"></i>

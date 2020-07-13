@@ -3,6 +3,9 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>aspnet-AdminLTE.StarterKit-655C7BC5-BA92-48A1-B166-BC3C12D19927</UserSecretsId>
+    <Authors>Mukesh Murugan</Authors>
+    <Company>codewithmukesh</Company>
+    <RepositoryUrl>https://github.com/iammukeshm/AdminLTE.StarterKit</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
