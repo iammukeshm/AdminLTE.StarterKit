@@ -1,15 +1,7 @@
 ﻿@{
-    if (ViewData.TryGetValue("ParentLayout", out var parentLayout))
-    {
-        Layout = (string)parentLayout;
-    }
-    else
-    {
-        Layout = "/Areas/Identity/Pages/_Layout.cshtml";
-    }
+    Layout = "~/Pages/Shared/AdminLTE/_Layout.cshtml";
 }
 
-<h2>Manage your account</h2>
 
 <div>
     <h4>Change your account settings</h4>

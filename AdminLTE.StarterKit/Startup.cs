@@ -15,6 +15,8 @@ using Microsoft.Extensions.Hosting;
 using AdminLTE.StarterKit.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.AspNetCore.Http;
 
 namespace AdminLTE.StarterKit
 {
@@ -44,6 +46,7 @@ namespace AdminLTE.StarterKit
                 o.Filters.Add(new AuthorizeFilter(policy));
             });
             services.AddRazorPages();
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
