@@ -1,4 +1,6 @@
-﻿<!-- Main Sidebar Container -->
+﻿@using Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 <aside class="main-sidebar elevation-2 sidebar-light-primary">
     <!-- Brand Logo -->
     <a href="../../index3.html" class="brand-link">
@@ -9,26 +11,30 @@
         <div>
             <span class="brand-text font-weight-light">AdminLTE Starter Kit</span>
         </div>
-        
+
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src="~/img/user2-160x160.jpg" class="img-circle elevation-0" alt="User Image">
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="image">
+                    <img src="~/img/user2-160x160.jpg" class="img-circle elevation-0" alt="User Image">
+                </div>
+                <div class="info">
+                    <a href="#" class="d-block">@UserManager.GetUserAsync(User).Result.FirstName @UserManager.GetUserAsync(User).Result.LastName</a>
+                </div>
             </div>
-            <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
-            </div>
-        </div>
+        }
+
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
-                     with font-awesome or any other icon font library -->
+             with font-awesome or any other icon font library -->
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -139,7 +145,7 @@
                         </p>
                     </a>
                 </li>
-               
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
