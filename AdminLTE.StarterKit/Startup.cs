@@ -18,6 +18,7 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.AspNetCore.Http;
 using AdminLTE.StarterKit.Services;
+using Microsoft.CodeAnalysis.Options;
 
 namespace AdminLTE.StarterKit
 {
@@ -36,7 +37,14 @@ namespace AdminLTE.StarterKit
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>(opt =>
+            {
+                opt.Password.RequiredLength = 7;
+                opt.Password.RequireDigit = false;
+                opt.Password.RequireUppercase = false;
+                opt.User.RequireUniqueEmail = true;
+                opt.SignIn.RequireConfirmedEmail = true;
+            })
                     .AddEntityFrameworkStores<ApplicationDbContext>()
                     .AddDefaultUI()
             .AddDefaultTokenProviders();
