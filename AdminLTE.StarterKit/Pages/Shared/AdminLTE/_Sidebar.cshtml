@@ -51,21 +51,29 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
-                with font-awesome or any other icon font library -->
+    with font-awesome or any other icon font library -->
                 <li class="nav-item">
                     <a is-active-page asp-page="/Index" class="nav-link">
                         <i class="nav-icon fas fa-home"></i>
                         <p>
                             Home
-                            <span class="right badge badge-danger">New</span>
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="../widgets.html" class="nav-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Document Repository
                         </p>
                     </a>
                 </li>
                 <li class="nav-item has-treeview">
                     <a class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon fas fa-mail-bulk"></i>
                         <p>
-                            Dashboard
+                            Mail
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
@@ -73,49 +81,43 @@
                         <li class="nav-item">
                             <a class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Dashboard v1</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../../index2.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Dashboard v2</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../../index3.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Dashboard v3</p>
+                                <p>Compose Mail</p>
                             </a>
                         </li>
                     </ul>
                 </li>
+                <li class="nav-header">Settings</li>
                 <li class="nav-item">
-                    <a href="../widgets.html" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
-                        <p>
-                            Widgets
-                            <span class="right badge badge-danger">New</span>
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-header">EXAMPLES</li>
-                <li class="nav-item">
-                    <a is-active-route asp-area="Identity" asp-page="/Account/Manage/Index" class="nav-link">
+                    <a is-active-page asp-area="Identity" asp-page="/Account/Manage/Index" class="nav-link">
                         <i class="nav-icon fas fa-cogs"></i>
                         <p>
                             Account Settings
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="../gallery.html" class="nav-link">
-                        <i class="nav-icon far fa-image"></i>
-                        <p>
-                            Gallery
-                        </p>
-                    </a>
-                </li>
+                @{
+                    if (User.IsInRole("SuperAdmin"))
+                    {
+                        <li class="nav-header">SUPER ADMIN</li>
+                        <li class="nav-item">
+                            <a is-active-page asp-area="Identity" asp-page="/Account/Users" class="nav-link">
+                                <i class="nav-icon fas fa-users-cog"></i>
+                                <p>
+                                    Manage Users
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a is-active-page asp-area="Identity" asp-page="/Account/Roles" class="nav-link">
+                                <i class="nav-icon fas fa-user-lock"></i>
+                                <p>
+                                    Manage Roles
+                                </p>
+                            </a>
+                        </li>
+                    }
+                }
+
 
             </ul>
         </nav>

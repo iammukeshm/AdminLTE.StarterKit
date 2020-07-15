@@ -14,7 +14,7 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<partial name="AdminLTE/_Styles" />
+    <partial name="AdminLTE/_Styles" />
 </head>
 <body class="hold-transition register-page">
     <div class="register-box">
@@ -27,54 +27,55 @@
                 <p class="login-box-msg">Register a new membership</p>
 
                 <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                    <small> <span asp-validation-for="Input.FirstName" class="text-danger"></span></small>
                     <div class="input-group mb-3">
                         <input asp-for="Input.FirstName" type="text" class="form-control" placeholder="First Name">
-                        <span asp-validation-for="Input.FirstName" class="text-danger"></span>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
                             </div>
                         </div>
+
                     </div>
+                    <small><span asp-validation-for="Input.LastName" class="text-danger"></span></small>
                     <div class="input-group mb-3">
                         <input asp-for="Input.LastName" type="text" class="form-control" placeholder="Last Name">
-                        <span asp-validation-for="Input.LastName" class="text-danger"></span>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
                             </div>
                         </div>
                     </div>
+                    <small> <span asp-validation-for="Input.UserName" class="text-danger"></span></small>
                     <div class="input-group mb-3">
                         <input asp-for="Input.UserName" type="text" class="form-control" placeholder="User Name">
-                        <span asp-validation-for="Input.UserName" class="text-danger"></span>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
                             </div>
                         </div>
                     </div>
+                    <small><span asp-validation-for="Input.Email" class="text-danger"></span></small>
                     <div class="input-group mb-3">
                         <input asp-for="Input.Email" type="email" class="form-control" placeholder="Email">
-                        <span asp-validation-for="Input.Email" class="text-danger"></span>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
                             </div>
                         </div>
                     </div>
+                    <small><span asp-validation-for="Input.Password" class="text-danger"></span></small>
                     <div class="input-group mb-3">
                         <input asp-for="Input.Password" type="password" class="form-control" placeholder="Password">
-                        <span asp-validation-for="Input.Password" class="text-danger"></span>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
                             </div>
                         </div>
                     </div>
+                    <small><span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span></small>
                     <div class="input-group mb-3">
                         <input asp-for="Input.ConfirmPassword" type="password" class="form-control" placeholder="Retype password">
-                        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>

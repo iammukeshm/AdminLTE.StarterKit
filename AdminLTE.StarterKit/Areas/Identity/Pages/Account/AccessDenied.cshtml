@@ -2,9 +2,42 @@
 @model AccessDeniedModel
 @{
     ViewData["Title"] = "Access denied";
+    Layout = null;
 }
 
-<header>
-    <h1 class="text-danger">@ViewData["Title"]</h1>
-    <p class="text-danger">You do not have access to this resource.</p>
-</header>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Confirm Email</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <partial name="AdminLTE/_Styles" />
+</head>
+<body class="hold-transition login-page" style="background: white!important;">
+    <div class="login-box" style="width:600px!important;">
+        <div class="login-logo">
+            <a class="text-danger" href="https://codewithmukesh.com"><b>ACCESS DENIED</b></a>
+        </div>
+        <!-- /.login-logo -->
+        <p class="login-box-msg">You are not authorized to access this resource.</p>
+        <!-- /.login-card-body -->
+        <div style="text-align: -webkit-center;">
+            <p class="mb-1">
+                <a type="button" href="/" class="btn btn-primary">Go Home</a>
+            </p>
+            <br />
+            <small style="font-size:15px"> Made with <span style="color: #e25555;">&hearts;</span> by <a href="http://codewithmukesh.com">codewithmukesh</a> and <a href="http://adminlte.io">AdminLTE.io</a>.</small>
+
+        </div>
+    </div>
+    <partial name="AdminLTE/_Scripts" />
+
+</body>
+</html>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

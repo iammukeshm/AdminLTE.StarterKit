@@ -1,0 +1,54 @@
+﻿@page
+@model AdminLTE.StarterKit.Areas.Identity.Pages.Account.UsersModel
+@{
+    Layout = "~/Pages/Shared/AdminLTE/_Layout.cshtml";
+}
+    <div>
+        <h4>Manage Users</h4>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Roles</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model.Users)
+                {
+                    <tr>
+                        <td>@user.FirstName</td>
+                        <td>@user.LastName</td>
+                        <td>@user.Email</td>
+                        <td>
+                            @{
+                                if (user.Roles.Contains("SuperAdmin"))
+                                {
+                                    <span class="badge badge-danger">SA</span>
+                                }
+                                else if (user.Roles.Contains("Admin"))
+                                {
+                                    <span class="badge badge-danger">ADMIN</span>
+                                }
+                                else if (user.Roles.Contains("Moderator"))
+                                {
+                                    <span class="badge badge-warning">MOD</span>
+                                }
+                                else if (user.Roles.Contains("Basic"))
+                                {
+                                    <span class="badge badge-success">BASIC</span>
+                                }
+
+                            }
+                        </td>
+                        <td>
+                            <a class="btn btn-primary" asp-controller="UserRoles" asp-action="Manage" asp-route-userId="@user.UserId">Manage Roles</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>

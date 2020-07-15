@@ -1,0 +1,36 @@
+﻿@page
+@model AdminLTE.StarterKit.Areas.Identity.Pages.Account.RolesModel
+@{
+    Layout = "~/Pages/Shared/AdminLTE/_Layout.cshtml";
+}
+<div>
+    <h4>Roles Manager</h4>
+    <form method="post">
+        <div class="input-group col-4" style="padding:0px;">
+            <input autocomplete="off" name="roleName" type="text" class="form-control">
+            <span class="input-group-append">
+                <button type="button" class="btn btn-success">Add New Role</button>
+            </span>
+        </div>
+    </form>
+    <br />
+    <table class="table table-striped">
+        <thead>
+            <tr>
+
+                <th>Id</th>
+                <th>Role</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var role in Model.Roles)
+            {
+                <tr>
+                    <td>@role.Id</td>
+                    <td>@role.Name</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
