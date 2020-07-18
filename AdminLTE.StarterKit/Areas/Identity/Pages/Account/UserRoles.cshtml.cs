@@ -27,6 +27,8 @@ namespace AdminLTE.StarterKit.Areas.Identity.Pages.Account
         public List<UserRolesViewModel> UserRoles { get; set; }
         [BindProperty]
         public string UserId { get; set; }
+        [BindProperty]
+        public string UserName { get; set; }
         public async Task OnGet(string userId)
         {
             UserRoles = new List<UserRolesViewModel>();
@@ -37,6 +39,7 @@ namespace AdminLTE.StarterKit.Areas.Identity.Pages.Account
             {
                 return;
             }
+            UserName = user.UserName;
             //ViewBag.UserName = user.UserName;
             foreach (var role in _roleManager.Roles)
             {
