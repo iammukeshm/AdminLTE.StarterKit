@@ -4,11 +4,8 @@ using MailKit.Security;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 using MimeKit;
-using MimeKit.Text;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace AdminLTE.StarterKit.Services
@@ -50,7 +47,6 @@ namespace AdminLTE.StarterKit.Services
             }
             builder.HtmlBody = html;
             email.Body = builder.ToMessageBody();
-            // send email
             using var smtp = new SmtpClient();
             smtp.Connect(_settings.SmtpHost, _settings.SmtpPort, SecureSocketOptions.StartTls);
             smtp.Authenticate(_settings.SmtpUser, _settings.SmtpPass);

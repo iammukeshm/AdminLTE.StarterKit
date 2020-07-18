@@ -44,7 +44,7 @@
                             }
                         </td>
                         <td>
-                            <a class="btn btn-primary" asp-controller="UserRoles" asp-action="Manage" asp-route-userId="@user.UserId">Manage Roles</a>
+                            <a class="btn btn-primary" asp-area="Identity" asp-page="/Account/UserRoles" asp-route-userId="@user.UserId">Manage Roles</a>
                         </td>
                     </tr>
                 }

@@ -1,24 +1,18 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.EntityFrameworkCore;
 using AdminLTE.StarterKit.Data;
+using AdminLTE.StarterKit.Models;
+using AdminLTE.StarterKit.Services;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using AdminLTE.StarterKit.Models;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.AspNetCore.Http;
-using AdminLTE.StarterKit.Services;
-using Microsoft.CodeAnalysis.Options;
+using Microsoft.Extensions.Hosting;
+using NToastNotify;
 
 namespace AdminLTE.StarterKit
 {
@@ -37,14 +31,7 @@ namespace AdminLTE.StarterKit
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddIdentity<ApplicationUser, IdentityRole>(opt =>
-            {
-                opt.Password.RequiredLength = 7;
-                opt.Password.RequireDigit = false;
-                opt.Password.RequireUppercase = false;
-                opt.User.RequireUniqueEmail = true;
-                opt.SignIn.RequireConfirmedEmail = true;
-            })
+            services.AddIdentity<ApplicationUser, IdentityRole>()
                     .AddEntityFrameworkStores<ApplicationDbContext>()
                     .AddDefaultUI()
             .AddDefaultTokenProviders();
@@ -55,8 +42,15 @@ namespace AdminLTE.StarterKit
                     .RequireAuthenticatedUser()
                     .Build();
                 o.Filters.Add(new AuthorizeFilter(policy));
-            });
+            }).AddNToastNotifyNoty(new NotyOptions
+            {
+                Layout = "bottomRight",
+                ProgressBar = true,
+                Timeout = 5000,
+                Theme = "metroui"
+            }); ;
             services.AddRazorPages();
+
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.Configure<SMTPSettings>(Configuration.GetSection("SMTPSettings"));
             services.AddScoped<IEmailService, EmailService>();
@@ -76,7 +70,7 @@ namespace AdminLTE.StarterKit
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+            app.UseNToastNotify();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

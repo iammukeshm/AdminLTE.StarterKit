@@ -15,6 +15,7 @@
         <div class="content-wrapper" style="padding: 20px;min-height: 530.031px;background:white!important;">
             @RenderBody()
         </div>
+        @await Component.InvokeAsync("NToastNotify")
         <partial name="AdminLTE/_Footer" />
         <aside class="control-sidebar control-sidebar-dark">
         </aside>
