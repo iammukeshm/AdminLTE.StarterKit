@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using NToastNotify;
 
 namespace AdminLTE.StarterKit.Areas.Identity.Pages.Account
 {
@@ -27,19 +28,23 @@ namespace AdminLTE.StarterKit.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailService _emailSender;
         private readonly ApplicationSettings _appsettings;
+        private readonly IToastNotification _toastNotification;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailService emailSender,
-             IOptions<ApplicationSettings> appsettings)
+             IOptions<ApplicationSettings> appsettings,
+              IToastNotification toastNotification
+             )
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
             _appsettings = appsettings.Value;
+            _toastNotification = toastNotification;
         }
 
         [BindProperty]
@@ -97,11 +102,13 @@ namespace AdminLTE.StarterKit.Areas.Identity.Pages.Account
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
+                    _toastNotification.AddSuccessToastMessage("User created a new account with password.");
                     _logger.LogInformation("User created a new account with password.");
                     await _userManager.AddToRoleAsync(user, Enums.Roles.Basic.ToString());
                     if (_appsettings.AutoConfirmEmail)
                     {
                         await _signInManager.SignInAsync(user, isPersistent: false);
+                        _toastNotification.AddSuccessToastMessage($"Welcome {user.UserName}!");
                         return LocalRedirect(returnUrl);
                     }
                     else
