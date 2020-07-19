@@ -6,6 +6,7 @@
     <Authors>Mukesh Murugan</Authors>
     <Company>codewithmukesh</Company>
     <RepositoryUrl>https://github.com/iammukeshm/AdminLTE.StarterKit</RepositoryUrl>
+    <NoWarn>1701;1702;1591;1998</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
