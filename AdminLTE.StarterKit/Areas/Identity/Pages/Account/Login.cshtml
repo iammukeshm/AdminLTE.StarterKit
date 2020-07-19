@@ -26,6 +26,7 @@
                     <p class="login-box-msg">Sign in to start your session</p>
 
                     <form id="account" method="post">
+                        <small> <span asp-validation-for="Input.Email" class="text-danger"></span></small>
                         <div class="input-group mb-3">
                             <input asp-for="Input.Email" class="form-control" placeholder="Email / Username">
                             <div class="input-group-append">
@@ -34,6 +35,7 @@
                                 </div>
                             </div>
                         </div>
+                        <small> <span asp-validation-for="Input.Password" class="text-danger"></span></small>
                         <div class="input-group mb-3">
                             <input asp-for="Input.Password" type="password" class="form-control" placeholder="Password">
                             <div class="input-group-append">
@@ -44,7 +46,7 @@
                         </div>
                         <div class="row">
                             <div class="col-8">
-                                <div class="icheck-primary" >
+                                <div class="icheck-primary">
                                     <label asp-for="Input.RememberMe" style="padding: 0px!important;">
                                         <input asp-for="Input.RememberMe" />
                                         @Html.DisplayNameFor(m => m.Input.RememberMe)
@@ -52,6 +54,7 @@
                                 </div>
                             </div>
                             <br>
+                            <div asp-validation-summary="All" class="text-danger"></div>
                             <!-- /.col -->
                             <div class="col-12">
                                 <button type="submit" class="btn btn-primary btn-block">Sign In</button>

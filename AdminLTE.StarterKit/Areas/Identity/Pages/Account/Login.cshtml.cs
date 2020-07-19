@@ -83,6 +83,7 @@ namespace AdminLTE.StarterKit.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
+                
                 var userName = Input.Email;
                 if (IsValidEmail(Input.Email))
                 {

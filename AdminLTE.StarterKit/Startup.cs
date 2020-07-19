@@ -31,7 +31,7 @@ namespace AdminLTE.StarterKit
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
                     .AddEntityFrameworkStores<ApplicationDbContext>()
                     .AddDefaultUI()
             .AddDefaultTokenProviders();
@@ -53,6 +53,7 @@ namespace AdminLTE.StarterKit
 
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.Configure<SMTPSettings>(Configuration.GetSection("SMTPSettings"));
+            services.Configure<ApplicationSettings>(Configuration.GetSection("ApplicationSettings"));
             services.AddScoped<IEmailService, EmailService>();
         }
 
