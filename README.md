@@ -18,8 +18,10 @@ With this Repository, the only GOAL is to dramatically reduce these long hours o
 - [x] Custom User Model with Extended Properties like First Name, Last Name
 - [x] Profile Picture
 - [x] Advanced User and Role Management Module
-- [x] Serilog
+- [ ] Serilog
 - [x] Notifications
+- [ ] File Upload
+- [x] Mail Service
 
 
 ## Prerequisites
@@ -27,8 +29,20 @@ With this Repository, the only GOAL is to dramatically reduce these long hours o
 - .NET Core 3.1 SDK and above
 
 ## Getting Started
+To use this template, there are a few options:
 
-## Changelog
+- Install the Visual Studio Template and use it within Visual Studio (Coming Soon)
+- Download this Repository
+I'll cover both options here.
+
+### Using the GitHub Repository
+To get started based on this repository, you need to get a copy locally. You have three options: fork, clone, or download. Most of the time, you probably just want to download.
+
+You should download the repository, unblock the zip file, and extract it to a new folder if you just want to play with the project or you wish to use it as the starting point for an application.
+
+You should fork this repository only if you plan on submitting a pull request. Or if you'd like to keep a copy of a snapshot of the repository in your own GitHub account.
+
+You should clone this repository if you're one of the contributors and you have commit access to it. Otherwise you probably want one of the other options.
 
 
 ## Questions? Bugs? Suggestions for Improvement?
