@@ -31,7 +31,7 @@ With this Repository, the only GOAL is to dramatically reduce these long hours o
 ## Getting Started
 To use this template, there are a few options:
 
-- Install the Visual Studio Template and use it within Visual Studio (Coming Soon)
+- [Install the Visual Studio Template](https://marketplace.visualstudio.com/items?itemName=MukeshMurugan.AdminLTEStarterKitAspNetCore) and use it within Visual Studio
 - Download this Repository
 I'll cover both options here.
 
