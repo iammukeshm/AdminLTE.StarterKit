@@ -1,5 +1,7 @@
 # AdminLTE StarterKit for ASP.NET Core 3.1
-### Coming Soon. Work under Progress.
+### V1 Released . 
+
+Read More here - https://www.codewithmukesh.com/project/adminlte-starter-kit-for-aspnet-core/
 
 Check out my [blog](https://www.codewithmukesh.com) or say [Hi on Twitter!](https://twitter.com/codewithmukesh)
 
