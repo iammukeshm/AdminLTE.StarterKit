@@ -1,5 +1,6 @@
 # AdminLTE StarterKit for ASP.NET Core 3.1
 ### V1 Released - [Download it here](https://github.com/iammukeshm/AdminLTE.StarterKit/releases/tag/v1.0)
+Get the Solution Template from [Visual Studio Marketplace here](https://marketplace.visualstudio.com/items?itemName=MukeshMurugan.AdminLTEStarterKitAspNetCore)
 
 Read More here - https://www.codewithmukesh.com/project/adminlte-starter-kit-for-aspnet-core/
 
